@@ -2,7 +2,13 @@
 import AuthLogin from "@/components/auth-login";
 import { Grid } from "@mui/material";
 import { auth } from "auth";
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
+
+export const metadata: Metadata = {
+   title: "Login | MUI Next.js Boilerplate",
+   description: "Login page for MUI Next.js Boilerplate"
+};
 
 type Props = {
    searchParams?: Record<"callbackUrl" | "error", string>;

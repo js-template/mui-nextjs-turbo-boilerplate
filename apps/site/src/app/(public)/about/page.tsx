@@ -1,8 +1,14 @@
 import { Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import type { Metadata } from "next";
 import NextLink from "next/link";
 import { Fragment } from "react";
+
+export const metadata: Metadata = {
+   title: "About | MUI Next.js Boilerplate",
+   description: "About page for MUI Next.js Boilerplate"
+};
 
 export default function About() {
    return (

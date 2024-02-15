@@ -3,8 +3,8 @@ import Typography from "@mui/material/Typography";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-   title: "Dashboard",
-   description: "Dashboard page"
+   title: "Dashboard | MUI Next.js Boilerplate",
+   description: "Dashboard page for MUI Next.js Boilerplate"
 };
 
 export default function DashboardPage() {
