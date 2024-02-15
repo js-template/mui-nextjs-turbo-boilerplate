@@ -1,11 +1,14 @@
-# daisy-nextjs-setup
+# MUI NEXTJS BOILERPLATE
 
-This is a turbo repo for setting up a Next.js app with Tailwind CSS, DaisyUI, and TypeScript. This repo is a template for a Next.js app with the following features:
+This is a boilerplate for a Next.js project with Material-UI. This project is a starting point for a Next.js web application with Material-UI. It includes a basic layout and a theme configuration. It also includes a basic example of a responsive drawer and a responsive app bar.
 
 - TypeScript
 - ESLint
 - Prettier
-- Tailwind CSS
-- DaisyUI
-- PostCSS
-- Autoprefixer
+- Material-UI
+- Next.js
+- React-hook-form (for forms)
+- React-hot-toast (for toasts)
+- lodash (for utility functions)
+- Next-Auth (for authentication)
+- Iconify (for icons)
