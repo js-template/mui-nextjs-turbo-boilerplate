@@ -1,5 +1,6 @@
 "use client";
-
+import IconifyIcon from "@/IconifyIcon";
+import useThemeToggle from "@/next-theme/useThemeToggle";
 import { mainMenu, userMenu } from "@faceData/menus";
 import AdbIcon from "@mui/icons-material/Adb";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -23,6 +24,7 @@ const Header = () => {
    const { data, status } = useSession();
    const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
    const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+   const { toggleTheme, mode } = useThemeToggle();
 
    const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
       setAnchorElNav(event.currentTarget);
@@ -40,7 +42,16 @@ const Header = () => {
    };
 
    return (
-      <AppBar position='static'>
+      <AppBar
+         position='static'
+         sx={{
+            backgroundColor: (theme) => theme.palette.background.default,
+            color: (theme) => theme.palette.text.primary,
+            "& a": {
+               color: (theme) => theme.palette.text.primary,
+               textDecoration: "none"
+            }
+         }}>
          <Container maxWidth='xl'>
             <Toolbar disableGutters>
                <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
@@ -55,10 +66,8 @@ const Header = () => {
                      fontFamily: "monospace",
                      fontWeight: 700,
                      letterSpacing: ".3rem",
-                     color: "inherit",
                      textDecoration: "none"
-                  }}
-               >
+                  }}>
                   LOGO
                </Typography>
 
@@ -68,9 +77,7 @@ const Header = () => {
                      aria-label='account of current user'
                      aria-controls='menu-appbar'
                      aria-haspopup='true'
-                     onClick={handleOpenNavMenu}
-                     color='inherit'
-                  >
+                     onClick={handleOpenNavMenu}>
                      <MenuIcon />
                   </IconButton>
                   <Menu
@@ -89,17 +96,15 @@ const Header = () => {
                      onClose={handleCloseNavMenu}
                      sx={{
                         display: { xs: "block", md: "none" }
-                     }}
-                  >
+                     }}>
                      {_.map(mainMenu, (menu, index) => (
                         <MenuItem key={index} onClick={handleCloseNavMenu}>
                            <Button
-                              color='inherit'
+                              variant='text'
                               component={NextLink}
                               href={menu?.link}
                               target={menu?.target}
-                              disabled={menu?.disabled}
-                           >
+                              disabled={menu?.disabled}>
                               {menu?.title ?? "No title"}
                            </Button>
                         </MenuItem>
@@ -119,10 +124,8 @@ const Header = () => {
                      fontFamily: "monospace",
                      fontWeight: 700,
                      letterSpacing: ".3rem",
-                     color: "inherit",
                      textDecoration: "none"
-                  }}
-               >
+                  }}>
                   LOGO
                </Typography>
                <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
@@ -130,20 +133,23 @@ const Header = () => {
                      <Button
                         key={index}
                         onClick={handleCloseNavMenu}
-                        sx={{ my: 2, color: "white", display: "block" }}
+                        sx={{ my: 2, display: "block" }}
                         component={NextLink}
                         href={page?.link}
-                        target={page?.target}
-                     >
+                        target={page?.target}>
                         {page?.title ?? "No title"}
                      </Button>
                   ))}
                </Box>
 
                <Box sx={{ flexGrow: 0 }}>
+                  {/* Theme toggle */}
+                  <IconButton sx={{ ml: 1 }} onClick={() => toggleTheme()}>
+                     {mode === "dark" ? <IconifyIcon icon='eva:moon-fill' /> : <IconifyIcon icon='eva:sun-fill' />}
+                  </IconButton>
                   {status === "loading" && <LoadingButton loading variant='text'></LoadingButton>}
                   {status === "unauthenticated" && (
-                     <Button color='inherit' component={NextLink} href='/login'>
+                     <Button component={NextLink} href='/login'>
                         Login
                      </Button>
                   )}
@@ -168,16 +174,14 @@ const Header = () => {
                               horizontal: "right"
                            }}
                            open={Boolean(anchorElUser)}
-                           onClose={handleCloseUserMenu}
-                        >
+                           onClose={handleCloseUserMenu}>
                            {_.map(userMenu, (setting, index) => (
                               <MenuItem
                                  key={index}
                                  onClick={handleCloseUserMenu}
                                  component={NextLink}
                                  href={setting?.link}
-                                 target={setting?.target}
-                              >
+                                 target={setting?.target}>
                                  <Typography variant='body1'>{setting?.title}</Typography>
                               </MenuItem>
                            ))}

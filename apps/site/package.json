@@ -13,19 +13,21 @@
       "@emotion/cache": "latest",
       "@emotion/react": "latest",
       "@emotion/styled": "latest",
+      "@iconify/react": "^5.0.2",
       "@mui/icons-material": "latest",
       "@mui/lab": "^5.0.0-alpha.165",
       "@mui/material": "^5.15.10",
       "@mui/material-nextjs": "latest",
-      "ui": "workspace:*",
       "@types/lodash": "^4.14.202",
       "lodash": "^4.17.21",
       "next": "^14.1.0",
       "next-auth": "5.0.0-beta.5",
+      "next-themes": "^0.4.4",
       "react": "^18.2.0",
       "react-dom": "^18.2.0",
       "react-hook-form": "^7.50.1",
-      "react-hot-toast": "^2.4.1"
+      "react-hot-toast": "^2.4.1",
+      "ui": "workspace:*"
    },
    "devDependencies": {
       "@types/node": "latest",
